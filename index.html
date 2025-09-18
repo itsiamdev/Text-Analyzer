@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="file.png">
+  <title>Text Analyzer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 600px;
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: none;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #007bff;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .results {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+    }
+    .result-item {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Text Analyzer</h1>
+    <textarea id="textInput" placeholder="Enter your text here..."></textarea>
+    <button onclick="analyzeText()">Analyze</button>
+    <div class="results" id="results"></div>
+  </div>
+
+  <script>
+    function analyzeText() {
+      const text = document.getElementById("textInput").value.trim();
+      const resultsDiv = document.getElementById("results");
+      
+      if (!text) {
+        resultsDiv.innerHTML = "<p>Please enter some text.</p>";
+        return;
+      }
+
+      const wordCount = text.split(/\s+/).filter(word => word).length;
+      const charCount = text.length;
+      const charCountNoSpaces = text.replace(/\s+/g, '').length;
+      const sentenceCount = text.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0).length;
+      const paragraphCount = text.split(/\n+/).filter(para => para.trim().length > 0).length;
+
+      resultsDiv.innerHTML = `
+        <div class="result-item"><strong>Words:</strong> ${wordCount}</div>
+        <div class="result-item"><strong>Characters (with spaces):</strong> ${charCount}</div>
+        <div class="result-item"><strong>Characters (without spaces):</strong> ${charCountNoSpaces}</div>
+        <div class="result-item"><strong>Sentences:</strong> ${sentenceCount}</div>
+        <div class="result-item"><strong>Paragraphs:</strong> ${paragraphCount}</div>
+      `;
+    }
+  </script>
+</body>
+</html>
