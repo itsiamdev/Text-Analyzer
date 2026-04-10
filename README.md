@@ -11,7 +11,7 @@ A simple web-based text analysis tool that provides detailed statistics about yo
 
 ## Demo 🌐
 
-Experience the tool live: [https://iam269.github.io/Text-Analyzer/](https://iam269.github.io/Text-Analyzer/)
+Experience the tool live: [https://itsiamdev.github.io/Text-Analyzer/](https://itsiamdev.github.io/Text-Analyzer/)
 
 ## Usage 🚀
 
